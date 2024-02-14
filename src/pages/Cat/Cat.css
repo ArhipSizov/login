@@ -1,0 +1,11 @@
+.img_cat{
+    width: 100%;
+}
+.div_cats{
+    display: flex;
+    flex-wrap: wrap;
+    background-color:rgba(255, 0, 255, 0.1);
+}
+.div_cat{
+    width: 50%;
+}
