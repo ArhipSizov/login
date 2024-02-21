@@ -3,16 +3,13 @@ import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import Cat from "../pages/Cat/Cat";
 
-
 import {
   BrowserRouter as Router,
   Route,
   Routes,
-  NavLink,
 } from "react-router-dom";
 
 function App() {
-
   return (
     <Router>
       <div></div>

@@ -2,13 +2,18 @@ import { useState } from "react";
 import "./Register.css";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 
 export default function Register() {
   const [showModal, setShowModal] = useState(false);
   const [email, setEmail] = useState("");
   const [resPasvord, setResPasvord] = useState("");
-  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [firstName, setFirstName] = useState("");
   const [error, setError] = useState(false);
   const [pasvord, setPasvord] = useState("");
   const navigate = useNavigate();
@@ -20,9 +25,14 @@ export default function Register() {
     } else {
       const auth = getAuth();
       createUserWithEmailAndPassword(auth, email, pasvord)
-        .then((user) => {
-          console.log(user);
-          navigate("/");
+        .then(() => {
+          updateProfile(auth.currentUser, {
+            displayName: lastName + " " + firstName,
+          })
+            .then(() => {
+              navigate("/");
+            })
+            .catch((e) => console.log(e));
         })
         .catch((e) => console.log(e));
     }
@@ -76,13 +86,25 @@ export default function Register() {
           className="passvord_r"
           type="text"
           placeholder="Ваше имя"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+                <input
+          required
+          className="passvord_r"
+          type="text"
+          placeholder="Ваша фамилия"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
         />
         <div>
           <input required className="radio" type="radio" />
           <p className="p_radio1">Вы прочитали и согласны с </p>
-          <a onClick={() => setShowModal(true)} className="p_radio2" to="/document">
+          <a
+            onClick={() => setShowModal(true)}
+            className="p_radio2"
+            to="/document"
+          >
             соглашением
           </a>
         </div>

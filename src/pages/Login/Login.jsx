@@ -15,12 +15,10 @@ export default function Login() {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, pasvord)
       .then((user) => {
-        console.log(user);
         navigate("/");
       })
       .catch((e) => {
         setError(true);
-        console.log(1232);
       });
   }
   return (

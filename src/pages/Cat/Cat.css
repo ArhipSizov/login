@@ -2,10 +2,30 @@
     width: 100%;
 }
 .div_cats{
+    padding-top: 55px;
     display: flex;
     flex-wrap: wrap;
     background-color:rgba(255, 0, 255, 0.1);
 }
 .div_cat{
     width: 50%;
+}
+.div_logOut{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 30px;
+    background-color:rgba(255, 0, 221, 0.3);
+    top: 5px;
+    position: absolute;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 45px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 50px;
+    transition: 500ms;
+}
+.div_logOut:hover{
+    transform: scale(1.1);
 }
